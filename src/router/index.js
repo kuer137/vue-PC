@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import iView from 'iview';
 import Util from '../libs/util';
-import Routers from './router';
+import {Routers, loginRouter, pageRoute} from './router';
 
 Vue.use(VueRouter);
 Vue.use(iView);

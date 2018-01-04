@@ -3,12 +3,10 @@
 </style>
 <template>
     <div>
-        <head-nav></head-nav>
         <router-view></router-view>
     </div>
 </template>
 <script>
-    import headNav from './components/head'
     export default {
         data () {
             return {}
@@ -17,7 +15,7 @@
 
         },
         components: {
-            headNav
+            //
         },
         beforeDestroy () {
 
