@@ -3,7 +3,7 @@
         <Row>
             <Col span="8" offset="16">
                 <Form  class="ku-login-box" ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80">
-                    <FormItem label="用户名" prop="userName">
+                    <FormItem label="{{ $t('userName') }}" prop="userName">
                         <Input v-model="formValidate.userName" placeholder="用户名" style="width: 300px;">
                             <Icon type="ios-person-outline" slot="prepend"></Icon>
                         </Input>
