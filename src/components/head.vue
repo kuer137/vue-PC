@@ -1,6 +1,6 @@
 <template>
     <Menu ref="sideMenu" id="head_nav" mode="horizontal" theme="primary" active-name="1" @on-select="changeMenu">
-        <MenuItem name="/">
+        <MenuItem name="index">
             <Icon type="ios-paper"></Icon>
             导航
         </MenuItem>

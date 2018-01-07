@@ -1,53 +1,27 @@
-<style scoped lang="less">
-    .index{
-        width: 100%;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        text-align: center;
-        h1{
-            height: 150px;
-            img{
-                height: 100%;
-            }
-        }
-        h2{
-            color: #666;
-            margin-bottom: 200px;
-            p{
-                margin: 0 0 50px;
-            }
-        }
-        .ivu-row-flex{
-            height: 100%;
-        }
-    }
-</style>
 <template>
-    <div class="index">
-        <Row type="flex" justify="center" align="middle">
-            <Col span="24">
-                <h1>
-                    <img src="../images/logo.png">
-                </h1>
-                <h2>
-                    <p>Welcome to your iView app!</p>
-                    <Button type="ghost" @click="handleStart">Start iView</Button>
-                </h2>
-            </Col>
-        </Row>
+    <div class="layout">
+        <Layout>
+            <Header>
+                <head-nav></head-nav>
+            </Header>
+            <Layout>
+                <Content>
+                    <div>
+                        <img style="width: 100%;" src="../images/welcome.gif" alt="欢迎">
+                    </div>
+                </Content>
+            </Layout>
+        </Layout>
     </div>
 </template>
+<style scoped lang="less">
+
+</style>
 <script>
+    import headNav from '../components/common/head'
     export default {
-        methods: {
-            handleStart () {
-                this.$Modal.info({
-                    title: 'Bravo',
-                    content: 'Now, enjoy the convenience of iView.'
-                });
-            }
+        components: {
+            headNav
         }
     }
 </script>

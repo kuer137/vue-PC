@@ -3,20 +3,20 @@
         <Row>
             <Col span="8" offset="16">
                 <Form  class="ku-login-box" ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80">
-                    <FormItem label="{{ $t('userName') }}" prop="userName">
-                        <Input v-model="formValidate.userName" placeholder="用户名" style="width: 300px;">
+                    <FormItem :label="$t('userName')" prop="userName">
+                        <Input v-model="formValidate.userName" :placeholder="$t('userName')" style="width: 300px;">
                             <Icon type="ios-person-outline" slot="prepend"></Icon>
                         </Input>
                     </FormItem>
                     <br>
-                    <FormItem label="password" prop="password">
-                        <Input v-model="formValidate.password" placeholder="密码" style="width: 300px;">
+                    <FormItem :label="$t('password')" prop="password">
+                        <Input v-model="formValidate.password" :placeholder="$t('password')" style="width: 300px;">
                             <Icon type="ios-locked" slot="prepend"></Icon>
                         </Input>
                     </FormItem>
                     <br>
                     <FormItem>
-                        <Button class="ku-login-btn" @click="handleSubmit('formValidate')" icon="log-in" type="info">登录1</Button>
+                        <Button class="ku-login-btn" @click="handleSubmit('formValidate')" icon="log-in" type="info">{{ $t('signin') }}</Button>
                     </FormItem>
                 </Form>
             </Col>
@@ -46,6 +46,7 @@
         button{
             margin-bottom: 30px;
             width:100px;
+            margin-left: -80px;
         };
         .ivu-form-item{
             margin-bottom: 0;
@@ -53,6 +54,7 @@
     }
 </style>
 <script>
+    import router from 'vue-router';
     export default {
         data () {
             return {
@@ -62,19 +64,20 @@
                 },
                 ruleValidate: {
                     userName: [
-                        { required: true, message: '用户名不能为空', trigger: 'blur' }
+                        { required: true, message: this.$t('userNnmeNotEnpty'), trigger: 'blur' }
                     ],
                     password: [
-                        { required: true, message: '密码不能为空', trigger: 'blur' }
+                        { required: true, message: this.$t('userPasswordEnpty'), trigger: 'blur' }
                     ]
                 }
             }
         },
         methods: {
             handleSubmit (name) {
+                const that = this;
                 this.$refs[name].validate(function(valid) {
                     if (valid){
-                        console.log('success')
+                        that.$router.push('index');
                     } else {
                         console.log('fail')
                     }
