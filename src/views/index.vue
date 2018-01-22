@@ -6,9 +6,7 @@
             </Header>
             <Layout>
                 <Content>
-                    <div>
-                        <img style="width: 100%;" src="../images/welcome.gif" alt="欢迎">
-                    </div>
+                    <router-view></router-view>
                 </Content>
             </Layout>
         </Layout>

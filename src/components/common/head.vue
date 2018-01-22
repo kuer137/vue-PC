@@ -5,20 +5,45 @@
         </div>
         <div class="layout-nav">
             <MenuItem name="index">
-                <Icon type="ios-navigate"></Icon>
                 {{ $t('headNav') }}
             </MenuItem>
             <MenuItem name="form">
-                <Icon type="ios-keypad"></Icon>
-                Item 2
+                {{ $t('shop') }}
             </MenuItem>
             <MenuItem name="3">
-                <Icon type="ios-analytics"></Icon>
-                Item 3
+                {{ $t('good') }}
             </MenuItem>
             <MenuItem name="4">
-                <Icon type="ios-paper"></Icon>
-                Item 4
+                {{ $t('member') }}
+            </MenuItem>
+            <MenuItem name="4">
+                {{ $t('distribute') }}
+            </MenuItem>
+            <MenuItem name="4">
+                {{ $t('information') }}
+            </MenuItem>
+            <MenuItem name="4">
+                {{ $t('wholesaler') }}
+            </MenuItem>
+            <MenuItem name="4">
+                {{ $t('website') }}
+            </MenuItem>
+            <MenuItem name="4">
+                {{ $t('activation') }}
+            </MenuItem>
+            <MenuItem name="4">
+                {{ $t('statistics') }}
+            </MenuItem>
+            <MenuItem name="4">
+                {{ $t('setup') }}
+            </MenuItem>
+        </div>
+        <div class="layout-other">
+            <MenuItem name="4">
+                <Button type="primary">{{ $t('area') }}</Button>
+            </MenuItem>
+            <MenuItem name="4">
+                <Button type="warning">{{ $t('signout') }}</Button>
             </MenuItem>
         </div>
     </Menu>
@@ -30,6 +55,10 @@
         border-radius: 50%;
         float: left;
         margin-top: 8px;
+        margin-right: 30px;
+    }
+    .layout-other{
+        float: right;
         margin-right: 60px;
     }
 </style>
