@@ -1,32 +1,39 @@
-// 不作为Main组件的子页面展示的页面单独写，如下
-export const loginRouter = {
-        path: '/',
-        name: 'login',
-        meta: {
-            title: '登录'
+import App from '../app'
+
+const login = (resolve) => require(['../views/login/login.vue'], resolve);  //登录页
+
+const page = (resolve) => require(['../views/index.vue'], resolve);  //内页，已登录
+const home = (resolve) => require(['../views/home/index.vue'], resolve);  //首页
+
+export const Routers = [{
+    path: '/',
+    component: App, //顶层路由，对应index.html
+    children:[  //二级路由。对应App.vue
+        //地址为空时跳转login页面
+        {
+            path: '',
+            redirect: '/login'
         },
-        component: (resolve) => require(['../views/login/login.vue'], resolve)
-};
-
-
-// 作为Main组件的子页面展示并且在左侧菜单显示的路由写在appRouter里
-export const pageRoute = [
-    {
-        path: '/index',
-        meta: {
-            title: ''
+        //登录页
+        {
+            path: '/login',
+            component: login
         },
-        component: (resolve) => require(['../views/index.vue'], resolve)
-    },
-    {
-        path: '/form',
-        component: (resolve) => require(['../views/form.vue'], resolve)
-    }
-];
-
-
-// 所有上面定义的路由都要写在下面的routers里
-export const Routers = [
-    loginRouter,
-    ...pageRoute
-];
+        //内页（已登录）
+        {
+            path: '/page',
+            component: page,
+            children:[
+                //首页
+                {
+                    path: '/',
+                    redirect: '/home'
+                },
+                {
+                    path: '/home',
+                    component: home
+                }
+            ]
+        },
+    ]
+}];

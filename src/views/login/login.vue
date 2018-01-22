@@ -77,7 +77,7 @@
                 const that = this;
                 this.$refs[name].validate(function(valid) {
                     if (valid){
-                        that.$router.push('index');
+                        that.$router.push('page');
                     } else {
                         console.log('fail')
                     }

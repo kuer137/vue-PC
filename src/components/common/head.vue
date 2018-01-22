@@ -7,7 +7,7 @@
             <MenuItem name="index">
                 {{ $t('headNav') }}
             </MenuItem>
-            <MenuItem name="form">
+            <MenuItem name="2">
                 {{ $t('shop') }}
             </MenuItem>
             <MenuItem name="3">
