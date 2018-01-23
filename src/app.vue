@@ -10,6 +10,7 @@
 </style>
 <script>
     import elI18n from './components/common/i18n'
+
     export default {
         data () {
             return {}
@@ -22,6 +23,11 @@
         },
         beforeDestroy () {
 
+        },
+        watch:{
+            '$route' (to){
+                console.log(this.$store,562325)
+            }
         }
     }
 </script>
