@@ -4,6 +4,7 @@ const login = (resolve) => require(['../views/login/login.vue'], resolve);  //�
 
 const page = (resolve) => require(['../views/index.vue'], resolve);  //内页，已登录
 const home = (resolve) => require(['../views/home/index.vue'], resolve);  //首页
+const shop = (resolve) => require(['../views/shop/index.vue'], resolve);  //商品
 
 export const Routers = [{
     path: '/',
@@ -32,6 +33,10 @@ export const Routers = [{
                 {
                     path: '/home',
                     component: home
+                },
+                {
+                    path: '/shop',
+                    component: shop
                 }
             ]
         },
