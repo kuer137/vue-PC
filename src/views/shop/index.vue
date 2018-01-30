@@ -20,6 +20,7 @@
 </style>
 <script>
     import comSider from '../../components/common/sider'
+
     export default {
         components: {
             comSider

@@ -74,13 +74,15 @@
         name: 'headNav',
         data() {
             return {
-                activeName:'home'
+                activeName:this.$store.modules.app.state.currentPageName
             }
         },
         methods: {
             changeMenu (active) {
                 console.log(active,999);
+                this.$store.modules.app.state.currentPageName = active;
                 this.$router.push(active)
+                console.log(this.$store,111222333)
             }
         }
     }
