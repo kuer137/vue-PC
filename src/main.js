@@ -18,5 +18,6 @@ new Vue({
     render: h => h(App),
     mounted () {
         //console.log(this.$store,888555666)
+        this.$store.commit('initHeadNav');
     }
 });

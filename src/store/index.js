@@ -7,7 +7,7 @@ Vue.use(Vuex);
 
 console.log(app,456456)
 
-const store = {
+const store = new Vuex.Store({
     state: {
         stle:1,
         sdfj:2
@@ -21,6 +21,6 @@ const store = {
     modules: {
         app
     }
-};
+});
 
 export default store;

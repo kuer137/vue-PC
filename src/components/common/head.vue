@@ -74,15 +74,20 @@
         name: 'headNav',
         data() {
             return {
-                activeName:this.$store.modules.app.state.currentPageName
+//                activeName:'home'
+            }
+        },
+        computed:{   //计算属性将被混入到 Vue 实例中。
+            activeName () {
+                return this.$store.state.app.initHeadNavName? this.$store.state.app.initHeadNavName:'home';
             }
         },
         methods: {
             changeMenu (active) {
                 console.log(active,999);
-                this.$store.modules.app.state.currentPageName = active;
                 this.$router.push(active)
-                console.log(this.$store,111222333)
+                console.log(this.$store,111222333);
+                localStorage.initHeadNavName = active;
             }
         }
     }

@@ -3,7 +3,7 @@ import Vue from 'vue';
 const app = {
     state: {
         lang: 'zh-CN',
-        currentPageName: '',
+        initHeadNavName: '',
         currentPath: [
             {
                 title: '首页',
@@ -13,7 +13,11 @@ const app = {
         ] // 面包屑数组
     },
     mutations: {
-        //
+        initHeadNav (state) {
+            if (localStorage.initHeadNavName) {
+                state.initHeadNavName = localStorage.initHeadNavName;
+            }
+        }
     }
 };
 
