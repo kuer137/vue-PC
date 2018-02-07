@@ -4,7 +4,12 @@ const login = (resolve) => require(['../views/login/login.vue'], resolve);  //�
 
 const page = (resolve) => require(['../views/index.vue'], resolve);  //内页，已登录
 const home = (resolve) => require(['../views/home/index.vue'], resolve);  //首页
-const shop = (resolve) => require(['../views/shop/index.vue'], resolve);  //商品
+const shop = (resolve) => require(['../views/shop/index.vue'], resolve);  //店铺
+const good = (resolve) => require(['../views/good/index.vue'], resolve);  //商品
+
+//二级路由
+const shoplist = (resolve) => require(['../views/shop/list.vue'], resolve);  //店铺列表
+const addshop = (resolve) => require(['../views/shop/add.vue'], resolve);  //添加店铺
 
 export const Routers = [{
     path: '/',
@@ -36,8 +41,28 @@ export const Routers = [{
                 },
                 {
                     path: '/shop',
-                    component: shop
+                    component: shop,
+                    children:[
+                        {
+                            path: '/shop',
+                            redirect: '/shop/list'
+                        },
+                        {
+                            path: '/shop/list',
+                            component: shoplist
+                        },
+                        {
+                            path: '/shop/add',
+                            component: addshop
+                        }
+
+                    ]
+                },
+                {
+                    path: '/good',
+                    component: good
                 }
+
             ]
         },
     ]

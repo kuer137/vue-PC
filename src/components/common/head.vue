@@ -13,33 +13,33 @@
                     <MenuItem name="shop">
                         {{ $t('shop') }}
                     </MenuItem>
-                    <MenuItem name="3">
+                    <MenuItem name="good">
                         {{ $t('good') }}
                     </MenuItem>
-                    <MenuItem name="4">
-                        {{ $t('member') }}
-                    </MenuItem>
-                    <MenuItem name="4">
-                        {{ $t('distribute') }}
-                    </MenuItem>
-                    <MenuItem name="4">
-                        {{ $t('information') }}
-                    </MenuItem>
-                    <MenuItem name="4">
-                        {{ $t('wholesaler') }}
-                    </MenuItem>
-                    <MenuItem name="4">
-                        {{ $t('website') }}
-                    </MenuItem>
-                    <MenuItem name="4">
-                        {{ $t('activation') }}
-                    </MenuItem>
-                    <MenuItem name="4">
-                        {{ $t('statistics') }}
-                    </MenuItem>
-                    <MenuItem name="4">
-                        {{ $t('setup') }}
-                    </MenuItem>
+                    <!--<MenuItem name="4">-->
+                        <!--{{ $t('member') }}-->
+                    <!--</MenuItem>-->
+                    <!--<MenuItem name="4">-->
+                        <!--{{ $t('distribute') }}-->
+                    <!--</MenuItem>-->
+                    <!--<MenuItem name="4">-->
+                        <!--{{ $t('information') }}-->
+                    <!--</MenuItem>-->
+                    <!--<MenuItem name="4">-->
+                        <!--{{ $t('wholesaler') }}-->
+                    <!--</MenuItem>-->
+                    <!--<MenuItem name="4">-->
+                        <!--{{ $t('website') }}-->
+                    <!--</MenuItem>-->
+                    <!--<MenuItem name="4">-->
+                        <!--{{ $t('activation') }}-->
+                    <!--</MenuItem>-->
+                    <!--<MenuItem name="4">-->
+                        <!--{{ $t('statistics') }}-->
+                    <!--</MenuItem>-->
+                    <!--<MenuItem name="4">-->
+                        <!--{{ $t('setup') }}-->
+                    <!--</MenuItem>-->
                 </div>
                 <div class="layout-other">
                     <MenuItem name="4">

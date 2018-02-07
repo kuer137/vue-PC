@@ -7,7 +7,12 @@
                     :activeVal="activeVal"
                     :open-val="openVal"
             ></com-sider>
-            <router-view></router-view>
+            <Layout :style="{padding: '0 24px 24px', marginLeft: '200px',minHeight:'860px'}">
+                商品
+                <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
+                    Content
+                </Content>
+            </Layout>
         </Layout>
     </div>
 </template>
@@ -25,44 +30,44 @@
             menuTheme () {  //侧边导航
                 return [
                     {
-                        name:'店铺列表',
-                        val:'shop',
+                        name:'商品列表',
+                        val:'good_1',
                         twoList:[
                             {
-                                name:'店铺列表',
-                                routes:'list',
-                                val:'shop-1'
+                                name:'商品列表',
+                                route:'good',
+                                val:'good-1'
                             },
                             {
-                                name:'添加店铺',
-                                routes:'add',
-                                val:'shop-2'
+                                name:'下架商品',
+                                route:'undergood',
+                                val:'good-2'
                             }
                         ]
                     },
                     {
-                        name:'店铺分类',
-                        val:'shop_2',
+                        name:'商品分类',
+                        val:'good_2',
                         twoList:[
                             {
-                                name:'分类列表',
-                                routes:'catelist',
-                                val:'shop-3'
+                                name:'商品分类',
+                                route:'goodcate',
+                                val:'good-3'
                             },
                             {
                                 name:'添加分类',
-                                routes:'addcate',
-                                val:'shop-4'
+                                routes:'addgoodcate',
+                                val:'good-4'
                             }
                         ]
                     }
                 ];
             },
             openVal () {
-                return ['shop'];
+                return ['good_1'];
             },
             activeVal () {
-                return 'list';
+                return 'good-1';
             }
         }
     }
