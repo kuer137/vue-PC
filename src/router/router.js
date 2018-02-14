@@ -10,6 +10,8 @@ const good = (resolve) => require(['../views/good/index.vue'], resolve);  //商�
 //二级路由
 const shoplist = (resolve) => require(['../views/shop/list.vue'], resolve);  //店铺列表
 const addshop = (resolve) => require(['../views/shop/add.vue'], resolve);  //添加店铺
+const goodlist = (resolve) => require(['../views/good/list.vue'], resolve);  //商品列表
+const undergood = (resolve) => require(['../views/good/undergood.vue'], resolve);  //下架商品
 
 export const Routers = [{
     path: '/',
@@ -60,7 +62,22 @@ export const Routers = [{
                 },
                 {
                     path: '/good',
-                    component: good
+                    component: good,
+                    children:[
+                        {
+                            path: '/good',
+                            redirect: '/good/list'
+                        },
+                        {
+                            path: '/good/list',
+                            component: goodlist
+                        },
+                        {
+                            path: '/good/undergood',
+                            component: undergood
+                        }
+
+                    ]
                 }
 
             ]

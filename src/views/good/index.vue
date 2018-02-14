@@ -7,12 +7,7 @@
                     :activeVal="activeVal"
                     :open-val="openVal"
             ></com-sider>
-            <Layout :style="{padding: '0 24px 24px', marginLeft: '200px',minHeight:'860px'}">
-                商品
-                <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
-                    Content
-                </Content>
-            </Layout>
+            <router-view></router-view>
         </Layout>
     </div>
 </template>
@@ -31,16 +26,16 @@
                 return [
                     {
                         name:'商品列表',
-                        val:'good_1',
+                        val:'good',
                         twoList:[
                             {
                                 name:'商品列表',
-                                route:'good',
+                                routes:'list',
                                 val:'good-1'
                             },
                             {
                                 name:'下架商品',
-                                route:'undergood',
+                                routes:'undergood',
                                 val:'good-2'
                             }
                         ]
@@ -51,7 +46,7 @@
                         twoList:[
                             {
                                 name:'商品分类',
-                                route:'goodcate',
+                                routes:'goodcate',
                                 val:'good-3'
                             },
                             {
@@ -64,10 +59,10 @@
                 ];
             },
             openVal () {
-                return ['good_1'];
+                return ['good'];
             },
             activeVal () {
-                return 'good-1';
+                return 'list';
             }
         }
     }

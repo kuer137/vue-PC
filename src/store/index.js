@@ -9,11 +9,12 @@ console.log(app,456456)
 
 const store = new Vuex.Store({
     state: {
-        stle:1,
-        sdfj:2
+        routerParse:'/'
     },
     mutations: {
-        //
+        changeRouterParse (state, name) {
+            state.routerParse = name;
+        }
     },
     actions: {
         //
