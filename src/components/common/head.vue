@@ -72,11 +72,6 @@
     import router from 'vue-router';
     export default {
         name: 'headNav',
-        data() {
-            return {
-//                activeName:'home'
-            }
-        },
         computed:{   //计算属性将被混入到 Vue 实例中。
             activeName () {
                 return this.$store.state.app.initHeadNavName? this.$store.state.app.initHeadNavName:'home';
@@ -89,6 +84,7 @@
                 this.$store.commit('changeRouterParse', '/'+active);
                 console.log(this.$store.state.routerParse,111222333);
                 localStorage.initHeadNavName = active;
+                localStorage.routerParse = '/'+active;
             }
         }
     }

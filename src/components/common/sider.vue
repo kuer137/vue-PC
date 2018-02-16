@@ -35,10 +35,8 @@
         },
         methods: {
             changeMenu (active) {
-                console.log(active,999);
                 this.$router.push(this.$store.state.routerParse+ '/' +active);
-                console.log(this.$store,111222333);
-                localStorage.initHeadNavName = active;
+//                console.log(this.$store,111222333);
             }
         }
     }

@@ -14,6 +14,11 @@ const store = new Vuex.Store({
     mutations: {
         changeRouterParse (state, name) {
             state.routerParse = name;
+        },
+        initRouterParse(state){
+            if(localStorage.routerParse){
+                state.routerParse = localStorage.routerParse;
+            }
         }
     },
     actions: {

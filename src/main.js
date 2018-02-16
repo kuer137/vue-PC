@@ -19,5 +19,6 @@ new Vue({
     mounted () {
         //console.log(this.$store,888555666)
         this.$store.commit('initHeadNav');
+        this.$store.commit('initRouterParse');  //初始化一级路由
     }
 });
