@@ -26,7 +26,7 @@
         },
         watch:{
             '$route' (to){
-                console.log(this.$store,562325)
+//                console.log(this.$store,562325)
             }
         }
     }

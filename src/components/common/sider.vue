@@ -1,7 +1,7 @@
 <template>
     <div>
         <Sider class="fixed-left" hide-trigger :style="{background: '#fff'}">
-            <Menu :active-name="activeVal" theme="light" width="auto" :open-names="openVal" @on-select="changeMenu">
+            <Menu ref="side_menu" :active-name="activeVal" theme="light" width="auto" :open-names="openVal" @on-select="changeMenu" @on-open-change="openChangeMenu" accordion>
                 <Submenu v-for="row in theme" :key="row.val" :name="row.val">
                     <template slot="title">
                         <Icon type="ios-keypad"></Icon>
@@ -34,9 +34,12 @@
             activeVal:String  //选中的栏目
         },
         methods: {
+            openChangeMenu(name){
+                console.log(name,898989)
+            },
             changeMenu (active) {
                 this.$router.push(this.$store.state.routerParse+ '/' +active);
-//                console.log(this.$store,111222333);
+                console.log(active,111222333);
             }
         }
     }
