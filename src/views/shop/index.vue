@@ -35,7 +35,7 @@
                             },
                             {
                                 name:'添加店铺',
-                                routes:'add',
+                                routes:'add/0',
                                 val:'shop-2'
                             }
                         ]

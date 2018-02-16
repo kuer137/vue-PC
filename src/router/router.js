@@ -54,7 +54,7 @@ export const Routers = [{
                             component: shoplist
                         },
                         {
-                            path: '/shop/add',
+                            path: '/shop/add/:id',
                             component: addshop
                         }
 

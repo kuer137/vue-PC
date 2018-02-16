@@ -9,32 +9,24 @@
             <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
                 <Row type="flex" justify="space-between">
                     <Col>
-                        <router-link :to="'/shop/add'">
+                        <router-link :to="'/shop/add/0'">
                             <Button type="primary" icon="plus-round">添加店铺</Button>
                         </router-link>
                     </Col>
                     <Col>
-                        <Form :model="formItem">
-                            <Row type="flex" justify="end">
-                                <Col>
-                                    <FormItem>
-                                        <Input class="kuer-w200" v-model="formItem.input" placeholder="请输入店铺名称或店铺ID"></Input>
-                                    </FormItem>
-                                </Col>
-                                <Col>
-                                    <FormItem class="kuer-ml10">
-                                        <Select class="kuer-w120" v-model="formItem.select" placeholder="选择分类">
-                                            <Option value="1">日本菜</Option>
-                                            <Option value="2">韩国菜</Option>
-                                        </Select>
-                                    </FormItem>
-                                </Col>
-                                <Col>
-                                    <FormItem class="kuer-ml10">
-                                        <Button type="ghost" class="kuer-w100" style="margin-left: 8px">搜索</Button>
-                                    </FormItem>
-                                </Col>
-                            </Row>
+                        <Form :model="formItem" inline>
+                            <FormItem>
+                                <Input class="kuer-w200" v-model="formItem.input" placeholder="请输入店铺名称或店铺ID"></Input>
+                            </FormItem>
+                            <FormItem class="kuer-ml10">
+                                <Select class="kuer-w120" v-model="formItem.select" placeholder="选择分类">
+                                    <Option value="1">日本菜</Option>
+                                    <Option value="2">韩国菜</Option>
+                                </Select>
+                            </FormItem>
+                            <FormItem class="kuer-ml10">
+                                <Button type="ghost" class="kuer-w100" style="margin-left: 8px">搜索</Button>
+                            </FormItem>
                         </Form>
                     </Col>
                 </Row>
@@ -131,11 +123,11 @@
                                     style: {
                                         marginRight: '5px'
                                     },
-//                                    on: {
-//                                        click: () => {
-//                                            this.show(params.index)
-//                                        }
-//                                    }
+                                    on: {
+                                        click: () => {
+                                            this.$router.push("/shop/add/"+params.row.id);
+                                        }
+                                    }
                                 }, '编辑'),
                                 h('Button', {
                                     props: {
@@ -160,22 +152,22 @@
                                     style: {
                                         marginRight: '5px'
                                     },
-//                                    on: {
-//                                        click: () => {
-//                                            this.remove(params.index)
-//                                        }
-//                                    }
+                                    on: {
+                                        click: () => {
+                                            this.$router.push("/good/list");
+                                        }
+                                    }
                                 }, '发布商品'),
                                 h('Button', {
                                     props: {
                                         type: 'ghost',
                                         size: 'small'
                                     },
-//                                    on: {
-//                                        click: () => {
-//                                            this.remove(params.index)
-//                                        }
-//                                    }
+                                    on: {
+                                        click: () => {
+                                            this.$router.push("/good/list");
+                                        }
+                                    }
                                 }, '商品列表')
                             ]);
                         }
