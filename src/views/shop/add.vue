@@ -26,6 +26,46 @@
                             <Option v-for="item in typeList" :value="item.value" :key="item.value">{{ item.label }}</Option>
                         </Select>
                     </FormItem>
+                    <FormItem label="* 店铺头像：">
+                        <div>
+                            <div class="add-upload-img">
+                                <Icon type="image" size="20"></Icon>
+                            </div>
+                            <Upload action="http://localhost:8080/#/shop/add/0"
+                                    :on-progress="handleProgress"
+                                    :on-success="handleSuccess"
+                                    :on-error="handleError">
+                                <Button type="ghost" icon="ios-cloud-upload-outline">图片上传</Button>
+                            </Upload>
+                        </div>
+                        <p class="kuer-fs-aaa">支持jpg、gif、png格式；建议尺寸: 150* 150 ；不超过2M。</p>
+                    </FormItem>
+                    <FormItem label="* 店铺主图：">
+                        <div>
+                            <div class="add-upload-img">
+                                <Icon type="image" size="20"></Icon>
+                            </div>
+                            <Upload action="http://localhost:8080/#/shop/add/0"
+                                    :on-progress="handleProgress"
+                                    :on-success="handleSuccess"
+                                    :on-error="handleError">
+                                <Button type="ghost" icon="ios-cloud-upload-outline">图片上传</Button>
+                            </Upload>
+                        </div>
+                        <p class="kuer-fs-aaa">支持jpg、gif、png格式；建议尺寸: 150* 150 ；不超过2M。</p>
+                    </FormItem>
+                    <FormItem label="* 营业时间：">
+                        <Row>
+                            <Col>
+                                <TimePicker type="time" placeholder="Select time" v-model="formItem.time"></TimePicker>
+                            </Col>
+                            <Col style="text-align: center">-</Col>
+                            <Col>
+                                <TimePicker type="time" placeholder="Select time" v-model="formItem.time"></TimePicker>
+                            </Col>
+                        </Row>
+                        <p class="kuer-fs-aaa">24小时制，如10：00-20：30</p>
+                    </FormItem>
                 </Form>
             </Content>
         </Layout>
@@ -35,6 +75,16 @@
     @import "../../styles/common.less";
     .add-ptb25{
         padding:25px 10px;
+    }
+    .add-upload-img{
+        width: 58px;
+        height:58px;
+        line-height: 58px;
+        text-align: center;
+        display: inline-block;
+        float: left;
+        border:1px dashed #ccc;
+        margin-right: 25px;
     }
 </style>
 <script>
@@ -47,11 +97,11 @@
             return {
                 formItem:{
                     name:'',
-                    consume:1,
+                    consume:1,  //数字输入框，默认必须是数字
                     privilege:1,
                     type:''
                 },
-                typeList:[
+                typeList:[  //店铺分类列表
                     {
                         value: 1,
                         label: '日本菜'
@@ -62,6 +112,20 @@
                     }
                 ]
             }
+        },
+        methods: {
+            handleProgress(res,file,fileList){
+                console.log("上传的进程的图片内容：res="+res+";file="+file);
+                console.log(res)
+            },
+            handleSuccess (res, file) {
+                file.url = 'https://o5wwk8baw.qnssl.com/7eb99afb9d5f317c912f08b5212fd69a/avatar';
+                file.name = '7eb99afb9d5f317c912f08b5212fd69a';
+                console.log('上传成功的图片内容：res='+res+";file="+file);
+            },
+            handleError(res,file,fileList){
+                console.log("上传的失败的图片内容：res="+res+";file="+file);
+            },
         }
     }
 </script>
