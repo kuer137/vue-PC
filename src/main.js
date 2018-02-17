@@ -1,3 +1,5 @@
+import iviewArea from 'iview-area';  //地区选择器
+
 import Vue from 'vue';
 import App from './app.vue';
 import iView from 'iview';
@@ -8,6 +10,7 @@ import './I18n';  //国际化
 
 import {router} from './router/index'
 
+Vue.use(iviewArea);
 Vue.use(iView);
 
 

@@ -55,16 +55,18 @@
                         <p class="kuer-fs-aaa">支持jpg、gif、png格式；建议尺寸: 150* 150 ；不超过2M。</p>
                     </FormItem>
                     <FormItem label="* 营业时间：">
-                        <Row>
-                            <Col>
-                                <TimePicker type="time" placeholder="Select time" v-model="formItem.time"></TimePicker>
-                            </Col>
-                            <Col style="text-align: center">-</Col>
-                            <Col>
-                                <TimePicker type="time" placeholder="Select time" v-model="formItem.time"></TimePicker>
-                            </Col>
-                        </Row>
+                        <TimePicker format="HH:mm" type="timerange" placement="bottom-end" placeholder="请选择时间" class="kuer-w200"></TimePicker>
                         <p class="kuer-fs-aaa">24小时制，如10：00-20：30</p>
+                    </FormItem>
+                    <FormItem label="* 店铺电话：">
+                        <Input class="kuer-w340" v-model="formItem.tel" placeholder="请输入店铺电话"></Input>
+                    </FormItem>
+                    <FormItem label="* 店铺地址：">
+                        <al-selector class="add-city-selector" v-model="res_s" />
+                        <p>
+                            <Input class="kuer-w340" v-model="formItem.tel" placeholder="请输入详细地址"></Input>
+                            <Button type="primary" class="kuer-ml15">搜索</Button>
+                        </p>
                     </FormItem>
                 </Form>
             </Content>
@@ -86,6 +88,12 @@
         border:1px dashed #ccc;
         margin-right: 25px;
     }
+    .add-city-selector{
+        float: left;
+        width: 600px;
+        margin-left: 0;
+        margin-bottom: 12px;
+    }
 </style>
 <script>
 
@@ -99,7 +107,8 @@
                     name:'',
                     consume:1,  //数字输入框，默认必须是数字
                     privilege:1,
-                    type:''
+                    type:'',
+                    tel:''
                 },
                 typeList:[  //店铺分类列表
                     {
@@ -110,7 +119,8 @@
                         value: 2,
                         label: '韩国菜'
                     }
-                ]
+                ],
+                res_s: ['河北省', '张家口市', '怀来县', '沙城镇']  //默认城市
             }
         },
         methods: {
