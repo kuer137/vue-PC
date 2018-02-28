@@ -63,12 +63,12 @@
                     </FormItem>
                     <FormItem label="* 店铺地址：">
                         <al-selector class="add-city-selector" v-model="city" id="city" />
-                        <p>
+                        <p style="clear: both">
                             <Input class="kuer-w340" v-model="formItem.addressDeatail" placeholder="请输入详细地址"></Input>
                             <Button type="primary" class="kuer-ml15">搜索</Button>
                         </p>
                     </FormItem>
-                    <FormItem label="* 地图标识：">
+                    <FormItem label="">
                         <div id="container" style="width:80%; height:300px"></div>
                         <div id="tip">
                             <input type="text" id="mapkeyword" name="mapkeyword" value="请输入关键字：(选定后搜索)" onfocus='this.value=""'/>
@@ -125,7 +125,7 @@
 <script>
 
     import AMap from 'AMap'  //引入高德地图
-    var map,placeSearch,windowsArr = [],marker = [],city="北京";
+    var map,placeSearch,windowsArr = [],marker = [],citycode=["110000"];
     export default {
         components: {
             //
@@ -178,13 +178,14 @@
                     map.addControl(new AMap.ToolBar());
                     map.addControl(new AMap.Scale());
                     //提示搜索法
+                    console.log(city[0],453)
                     let autoOptions = {
-                        city: city, //城市，默认全国
+                        city: citycode, //城市，默认全国
                         input: "mapkeyword"//使用联想输入的input的id
                     };
                     let autocomplete= new AMap.Autocomplete(autoOptions);
                     placeSearch = new AMap.PlaceSearch({
-                        city:city,
+                        city:citycode,
                         map:map
                     });
                     AMap.event.addListener(autocomplete, "select", function(e){
@@ -203,21 +204,20 @@
                 if(val[0].code){
                     let code = val[0];
                     let array = [];
-                    array[0]=code.name;
-                    console.log(val,val[0],code.name,code.code,array);
-                    this.city =array;
+                    citycode = array.push(val[0].code);
+                    console.log(val,val[0],code.name,code.code,citycode,val.length);
 
-                    this.init();
-                    let autoOptions = {
-                        city: code.name, //城市，默认全国
-                        input: "city"//使用联想输入的input的id
+                    let searchWord = '';
+                    let serrchCode = val[val.length-1].code;
+                    for(var x = 0;x<val.length;x++){
+                        searchWord += val[x].name;
                     };
-                    let autocomplete= new AMap.Autocomplete(autoOptions);
-                    AMap.event.addListener(autocomplete, "select", function(e){
-                        //TODO 针对选中的poi实现自己的功能
-                        placeSearch.setCity(code.code);
-                        placeSearch.search(code.name)
-                    });
+                    console.log(serrchCode,searchWord);
+                    this.init();
+
+                    //TODO 针对选中的poi实现自己的功能
+                    placeSearch.setCity(serrchCode);
+                    placeSearch.search(searchWord)
 
                 }
             }
