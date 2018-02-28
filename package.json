@@ -17,6 +17,7 @@
   "dependencies": {
     "iview": "^2.0.0-rc.8",
     "vue": "^2.2.6",
+    "vue-amap": "^0.5.1",
     "vue-router": "^2.2.1",
     "vuex": "^3.0.1"
   },
@@ -33,8 +34,8 @@
     "file-loader": "^0.8.5",
     "html-loader": "^0.3.0",
     "html-webpack-plugin": "^2.30.1",
-    "iview-loader": "^1.0.0-beta.3",
     "iview-area": "^1.5.16",
+    "iview-loader": "^1.0.0-beta.3",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "style-loader": "^0.13.1",
@@ -47,7 +48,8 @@
     "vue-template-compiler": "^2.2.1",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.9.7",
-    "webpack-merge": "^3.0.0"
+    "webpack-merge": "^3.0.0",
+    "vue-amap":"0.5.1"
   },
   "bugs": {
     "url": "https://github.com/iview/iview-project/issues"

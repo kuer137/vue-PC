@@ -62,11 +62,17 @@
                         <Input class="kuer-w340" v-model="formItem.tel" placeholder="请输入店铺电话"></Input>
                     </FormItem>
                     <FormItem label="* 店铺地址：">
-                        <al-selector class="add-city-selector" v-model="res_s" />
+                        <al-selector class="add-city-selector" v-model="city" id="city" />
                         <p>
-                            <Input class="kuer-w340" v-model="formItem.tel" placeholder="请输入详细地址"></Input>
+                            <Input class="kuer-w340" v-model="formItem.addressDeatail" placeholder="请输入详细地址"></Input>
                             <Button type="primary" class="kuer-ml15">搜索</Button>
                         </p>
+                    </FormItem>
+                    <FormItem label="* 地图标识：">
+                        <div id="container" style="width:80%; height:300px"></div>
+                        <div id="tip">
+                            <input type="text" id="mapkeyword" name="mapkeyword" value="请输入关键字：(选定后搜索)" onfocus='this.value=""'/>
+                        </div>
                     </FormItem>
                 </Form>
             </Content>
@@ -94,9 +100,32 @@
         margin-left: 0;
         margin-bottom: 12px;
     }
+    #tip {
+        background-color: #ddf;
+        color: #333;
+        border: 1px solid silver;
+        box-shadow: 3px 4px 3px 0px silver;
+        position: absolute;
+        top: 10px;
+        right: 25%;
+        border-radius: 5px;
+        overflow: hidden;
+        line-height: 20px;
+    }
+    #tip input[type="text"] {
+        height: 25px;
+        border: 0;
+        padding-left: 5px;
+        width: 280px;
+        border-radius: 3px;
+        outline: none;
+    }
+
 </style>
 <script>
 
+    import AMap from 'AMap'  //引入高德地图
+    var map,placeSearch,windowsArr = [],marker = [],city="北京";
     export default {
         components: {
             //
@@ -108,7 +137,8 @@
                     consume:1,  //数字输入框，默认必须是数字
                     privilege:1,
                     type:'',
-                    tel:''
+                    tel:'',
+                    addressDeatail:''
                 },
                 typeList:[  //店铺分类列表
                     {
@@ -120,7 +150,8 @@
                         label: '韩国菜'
                     }
                 ],
-                res_s: ['河北省', '张家口市', '怀来县', '沙城镇']  //默认城市
+                res_s: ['河北省', '张家口市', '怀来县', '沙城镇'],  //默认城市
+                city:[]
             }
         },
         methods: {
@@ -136,6 +167,60 @@
             handleError(res,file,fileList){
                 console.log("上传的失败的图片内容：res="+res+";file="+file);
             },
+            //高德地图组件初始化
+            init: function () {
+                map = new AMap.Map('container', {
+//                    center: [116.397428, 39.90923],
+                    resizeEnable: true,
+                    zoom: 10
+                })
+                AMap.plugin(['AMap.ToolBar', 'AMap.Scale','AMap.Autocomplete','AMap.PlaceSearch'], function () {
+                    map.addControl(new AMap.ToolBar());
+                    map.addControl(new AMap.Scale());
+                    //提示搜索法
+                    let autoOptions = {
+                        city: city, //城市，默认全国
+                        input: "mapkeyword"//使用联想输入的input的id
+                    };
+                    let autocomplete= new AMap.Autocomplete(autoOptions);
+                    placeSearch = new AMap.PlaceSearch({
+                        city:city,
+                        map:map
+                    });
+                    AMap.event.addListener(autocomplete, "select", function(e){
+                        //TODO 针对选中的poi实现自己的功能
+                        placeSearch.setCity(e.poi.adcode);
+                        placeSearch.search(e.poi.name)
+                    });
+                })
+            }
+        },
+        mounted:function () {
+            this.init()
+        },
+        watch: {
+            city (val) {
+                if(val[0].code){
+                    let code = val[0];
+                    let array = [];
+                    array[0]=code.name;
+                    console.log(val,val[0],code.name,code.code,array);
+                    this.city =array;
+
+                    this.init();
+                    let autoOptions = {
+                        city: code.name, //城市，默认全国
+                        input: "city"//使用联想输入的input的id
+                    };
+                    let autocomplete= new AMap.Autocomplete(autoOptions);
+                    AMap.event.addListener(autocomplete, "select", function(e){
+                        //TODO 针对选中的poi实现自己的功能
+                        placeSearch.setCity(code.code);
+                        placeSearch.search(code.name)
+                    });
+
+                }
+            }
         }
     }
 </script>

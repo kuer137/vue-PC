@@ -76,5 +76,8 @@ module.exports = {
         alias: {
             'vue': 'vue/dist/vue.esm.js'
         }
+    },
+    externals: {
+        'AMap': 'AMap'  //高德地图module
     }
 };
